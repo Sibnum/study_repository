@@ -3,22 +3,24 @@ class CipherMaster:
 
     def cipher(self, original_text, shift):
         result = []
-        for letter in original_text: # нужно регистр символа сделать низким
-            if letter in self.alphabet:
+        for letter in original_text:
+            if letter.lower() in self.alphabet:
                 original_symbol_index = self.alphabet.find(letter.lower())
                 cipher_symbol_index = (original_symbol_index + shift) % 33
                 result.append(self.alphabet[cipher_symbol_index])
             else:
                 result.append(letter)     
-
         return ''.join(result)
 
     def decipher(self, cipher_text, shift):
-        # Метод должен возвращать исходный текст
-        # с учётом переданного смещения shift.
         result = []
         for letter in cipher_text:
-            ...  # здесь ваш код
+            if letter.lower() in self.alphabet:
+                cipher_text = self.alphabet.find(letter.lower())
+                original_symbol_index = (cipher_text - shift) % 33
+                result.append(self.alphabet[original_symbol_index])
+            else:
+                result.append(letter)
         return ''.join(result)
 
 
