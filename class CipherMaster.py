@@ -9,7 +9,7 @@ class CipherMaster:
                 cipher_symbol_index = (original_symbol_index + shift) % 33
                 result.append(self.alphabet[cipher_symbol_index])
             else:
-                result.append(letter)     
+                result.append(letter)
         return ''.join(result)
 
     def decipher(self, cipher_text, shift):
