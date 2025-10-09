@@ -4,7 +4,8 @@ class Customer:
         self.name = name
         self.__discount = 10
 
-    def set_discount(self, __discount: int):
+    def set_discount(self, discount: int):
+        self.__discount = discount
         if self.__discount > 80:
             self.__discount = 80
 
