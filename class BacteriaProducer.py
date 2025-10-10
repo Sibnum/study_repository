@@ -1,5 +1,5 @@
 class BacteriaProducer:
-    """ Инициализация конвеера бактерий"""
+    """Инициализация конвеера бактерий"""
     def __init__(self, max_bacteria):
         self.max_bacteria = max_bacteria
         current_bacteria_count = 0
