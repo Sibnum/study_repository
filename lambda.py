@@ -10,4 +10,4 @@ def say_to_all(func, sequence):
 say_to_all(lambda item: print(f'Привет, {item}!'), people)
 # Этот вызов для каждого имени из списка должен напечатать
 # строчку До завтра, <имя>!
-say_to_all(lambda item: print(f'Привет, {item}!'), people)
+say_to_all(lambda item: print(f'До завтра, {item}!'), people)
