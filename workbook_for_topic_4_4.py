@@ -1,9 +1,4 @@
-	# Создайте переменную is_night и запишите в нее True если сейчас ночь, 
-    # иначе False
-
-# Если сейчас ночь, то совершите необходимые действия из условия задачи
-
-	# Рассчитайте результат
+from datetime import datetime
 from decimal import Decimal, getcontext
 
 
@@ -15,17 +10,23 @@ def currency_converter(convert_time, amount, currency_rate):
     getcontext().prec = 3
     amount_dec = Decimal(amount)
     rate_dec = Decimal(currency_rate)
-    night_start = '01:00'
-    night_end = '08:00'
+    night_start = datetime.strptime('01:00', '%H:%M')
+    night_end = datetime.strptime('08:00', '%H:%M')
+    convert_time = datetime.strptime(convert_time, '%H:%M')
+    if night_start <= convert_time < night_end:
+        is_night = True
+    else:
+        is_night = False
+    if is_night:
+        result = Decimal(amount_dec) * Decimal(rate_dec) * Decimal('1.05')
+    else:
+        result = Decimal(amount_dec) * Decimal(rate_dec)
+    return result
 
 
-
-
-
-
-print(currency_converter("10:00", -5, 1.5))  # amount не может быть меньше или равно 0.
-print(currency_converter("10:00", 100, 0))  # currency_rate не может быть меньше или равно 0.
-print(currency_converter("03:00", 100, 1)) # 105
-print(currency_converter("00:59", 100, 1)) # 100
-print(currency_converter("08:00", 100, 1)) # 100
-print(currency_converter("14:59", 50000, 3)) # 1.50E+5
+print(currency_converter("10:00", -5, 1.5))
+print(currency_converter("10:00", 100, 0))
+print(currency_converter("03:00", 100, 1))
+print(currency_converter("00:59", 100, 1))
+print(currency_converter("08:00", 100, 1))
+print(currency_converter("14:59", 50000, 3))
