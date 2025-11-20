@@ -1,22 +1,20 @@
-# Произведите необходимые импорты и установите точность вычислений
-
-# Объявите функцию conversion_result() с указанными в задаче параметрами
-
-    # Инициализируйте переменную now текущим временем
-
-	# Исходя из условия задачи верните нужную строку
-
-# Объявите функцию universal_converter() с указанными в задаче параметрами
-
-	# Сделайте проверку вводных параметров
 
 	# Исходя из введенного кода страны вызовите функцию conversion_result() с параметрами соответствующими этому коду
-def conversion_result(code, rub_amount=0):
+from datetime import datetime
+from decimal import Decimal, getcontext
+
+
+def universal_converter(code, rub_amount=0):
     if rub_amount < 0:
         return f'Ошибка ввода: rub_amount {rub_amount}'
     correct_codes = {'DE', 'US', 'CNN', 'de', 'us', 'cnn'}
     if not code in correct_codes:
         return f'Ошибка ввода: code {code}'
+    conversion_result(code)
+    
+def conversion_result(code):
+    getcontext().prec = 2
+    now = datetime.now()
     
 
 
