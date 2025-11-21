@@ -11,13 +11,31 @@ def universal_converter(code, rub_amount=0):
     if not code in correct_codes:
         return f'Ошибка ввода: code {code}'
     conversion_result(code)
+    if rub_amount == 0:
+        return (
+            f'Местная дата и время: {now}, '
+            f'местный курс к рублю: {conversion_result(code)}'
+        )
+    elif code == 'DE' or code == 'de':
+        now_de = now.strftime("%d.%m.%Y %H:%M")
+        return (
+            f'Местная дата и время: {now_de} Uhr, '
+            f'{rub_amount} RUB = {conversion_result(code)} EUR'
+        )
+    elif code == 'US' or code == 'us':
+        now_us = now.strftime("%d/%m/%Y %H:%M")
+        return (
+            f'Местная дата и время: {now_us}, '
+            f'{rub_amount} RUB = {conversion_result(code)} USD'
+        )
+    
     
 def conversion_result(code):
-    getcontext().prec = 2
-    now = datetime.now()
     
-
-
+    
+    
+now = datetime.now()
+getcontext().prec = 2
 
 print(universal_converter('DE')) # Местная дата и время: 21.08.2025 23:24 Uhr, местный курс к рублю: 93.763
 print(universal_converter('DE', 100)) # Местная дата и время: 21.08.2025 23:24 Uhr, 100 RUB = 1.07 EUR
