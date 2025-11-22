@@ -10,7 +10,7 @@ def universal_converter(code, rub_amount=0):
     correct_codes = {'DE', 'US', 'CNN', 'de', 'us', 'cnn'}
     if not code in correct_codes:
         return f'Ошибка ввода: code {code}'
-    conversion_result(code)
+    conversion_result(dt_format, rub_amount)
     if rub_amount == 0:
         return (
             f'Местная дата и время: {now}, '
@@ -28,9 +28,14 @@ def universal_converter(code, rub_amount=0):
             f'Местная дата и время: {now_us}, '
             f'{rub_amount} RUB = {conversion_result(code)} USD'
         )
+    elif code == 'CNN' or code == 'cnn':
+        now_cnn = now.strftime("%d-%m-%Y %H:%M")
+        return (
+            f'Местная дата и время: {now_cnn}, '
+            f'{rub_amount} RUB = {conversion_result(code)} CNN'
+        )
     
-    
-def conversion_result(code):
+def conversion_result(dt_format,currency_rate, currency_symbol, rub_amount=0):
     
     
     
