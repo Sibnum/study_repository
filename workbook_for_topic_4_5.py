@@ -1,3 +1,5 @@
+# нужно переделать под словарь, иначе тренажёр не пропустит
+
 from datetime import datetime
 from decimal import Decimal, getcontext
 
